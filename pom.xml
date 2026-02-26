@@ -1,10 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com</groupId>
   <artifactId>EcommerceApp</artifactId>
   <packaging>war</packaging>
@@ -12,16 +8,15 @@
   <name>EcommerceApp Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
-  <dependencies>
 
-    <!-- JUnit 5 -->
+  <dependencies>
+    <!-- Updated JUnit to JUnit 5 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.10.0</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
@@ -29,12 +24,13 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- File Upload -->
+
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
       <version>1.4</version>
     </dependency>
+
 
     <dependency>
       <groupId>commons-io</groupId>
@@ -42,7 +38,7 @@
       <version>2.11.0</version>
     </dependency>
 
-    <!-- Servlet API -->
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -50,12 +46,13 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Database Drivers -->
+
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.29</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.xerial</groupId>
@@ -63,38 +60,14 @@
       <version>3.42.0.0</version>
     </dependency>
 
-    <!-- ANTLR -->
+
     <dependency>
       <groupId>org.antlr</groupId>
       <artifactId>antlr4-runtime</artifactId>
       <version>4.10.1</version>
     </dependency>
-
-    <dependency>
-      <groupId>io.prometheus</groupId>
-      <artifactId>simpleclient</artifactId>
-      <version>0.16.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>io.prometheus</groupId>
-      <artifactId>simpleclient_common</artifactId>
-      <version>0.16.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>io.prometheus</groupId>
-      <artifactId>simpleclient_servlet</artifactId>
-      <version>0.16.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>io.prometheus</groupId>
-      <artifactId>simpleclient_hotspot</artifactId>
-      <version>0.16.0</version>
-    </dependency>
-
   </dependencies>
+
 
   <distributionManagement>
     <repository>
@@ -107,12 +80,13 @@
     </snapshotRepository>
   </distributionManagement>
 
+
   <build>
     <finalName>EcommerceApp</finalName>
 
-    <plugins>
 
-      <!-- Compiler Plugin -->
+    <plugins>
+      <!-- Maven Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -123,38 +97,48 @@
         </configuration>
       </plugin>
 
-      <!-- WAR Plugin -->
+
+      <!-- Maven WAR Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.1</version>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <failOnMissingWebXml>false</failOnMissingWebXml> <!-- Add this if you don't have a web.xml -->
         </configuration>
       </plugin>
 
-      <!-- Surefire Plugin -->
+
+      <!-- Maven Surefire Plugin (for JUnit 5) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.1.2</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
       </plugin>
 
-      <!-- Deploy Plugin -->
+
+      <!-- Maven Deploy Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
         <version>3.1.1</version>
       </plugin>
 
-      <!-- Clean Plugin -->
+
+      <!-- Maven Clean Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
         <version>3.3.1</version>
       </plugin>
 
-      <!-- Resources Plugin -->
+
+      <!-- Maven Resources Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
@@ -163,8 +147,6 @@
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
-
 </project>
